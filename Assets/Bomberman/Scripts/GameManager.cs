@@ -49,6 +49,11 @@ public sealed class GameManager : GenericSingletonClass<GameManager>
         isGameDone = false;
         totalWinGames = TotalWinGames;
         EnemyObj = new List<Transform>();
+        StopAllCoroutines();
+        if (bomb != null)
+        {
+            Destroy(bomb.gameObject);
+        }
         mapGenerator.GenerateMap();
     }
     internal void GeneratePlayer(Transform transform, Vector2 vector2)
@@ -102,7 +107,7 @@ public sealed class GameManager : GenericSingletonClass<GameManager>
     {
         if (isGameDone) yield break;
         isGameDone = true;
-        yield return new WaitForSeconds(bombNextBlastWait * bombBlastRange);
+        yield return new WaitForSeconds((bombNextBlastWait * bombBlastRange) + 2);
         if (IsPlayerAlive)
         {
             DestroyPlayer();
@@ -115,7 +120,6 @@ public sealed class GameManager : GenericSingletonClass<GameManager>
         }
         ++TotalPlayedGames;
         //mapGenerator.DeleteOldMap();
-        yield return new WaitForSeconds(1);
         resultPanel.SetActive(true);
         StopAllCoroutines();
     }

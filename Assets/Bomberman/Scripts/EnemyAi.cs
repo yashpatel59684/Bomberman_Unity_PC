@@ -40,6 +40,7 @@ public sealed class EnemyAi : MonoBehaviour
         }
         if (collision.collider.CompareTag("Player"))
         {
+            Destroy(collision.collider.gameObject);
             GameManager.Instance?.PlayerDie();
         }
     }
