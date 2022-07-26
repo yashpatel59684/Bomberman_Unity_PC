@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8288537143439848409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2724138785313448708}
+  - component: {fileID: 927640960437083376}
+  m_Layer: 0
+  m_Name: MapGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2724138785313448708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288537143439848409}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &927640960437083376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288537143439848409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9ffda3c15871c4b8daec1d4e1b3281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 15
+  y: 10
+  possibilityOfBrick: 33
+  maxEnemyAllow: 5
+  cameraHandler: {fileID: 0}
+  outWallPrefab: {fileID: 5959513796141254385, guid: 50f43fa173117c442a4c6db9205c16a2, type: 3}
+  inWallPrefab: {fileID: 5959513796141254385, guid: 2d59775134987374f9aac23ef1fca867, type: 3}
+  brickPrefab: {fileID: 5959513796141254385, guid: 27970efbcf5c47040b75997788287be3, type: 3}
+  enemyPosPrefab: {fileID: 0}
