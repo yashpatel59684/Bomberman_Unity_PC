@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 [CustomEditor(typeof(MapGenerator))]
@@ -19,6 +18,4 @@ public sealed class MapGeneratorEditor : Editor
             mapGenerator.DeleteOldMap();
         }
     }
-
 }
-#endif

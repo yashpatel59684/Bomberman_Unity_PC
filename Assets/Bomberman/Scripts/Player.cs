@@ -10,7 +10,7 @@ public sealed class Player : MonoBehaviour
     {
         if (obj.performed)
         {
-            GameManager.Instance.PlaceBomb(transform);
+            GameManager.Instance.PlaceBomb(transform.position);
         }
     }
     public void OnMove(InputAction.CallbackContext obj)
@@ -22,12 +22,5 @@ public sealed class Player : MonoBehaviour
     {
         newPos.Normalize();
         transform.Translate(runSpeed * Time.deltaTime * newPos);
-    }
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);
-        }
     }
 }

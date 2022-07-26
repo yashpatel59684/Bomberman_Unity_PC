@@ -78,6 +78,10 @@ public sealed class GameManager : GenericSingletonClass<GameManager>
     {
         Transform temp = Instantiate(enemyPrefab, transform);
         temp.position = vector2;
+        if (EnemyObj == null)
+        {
+            EnemyObj = new List<Transform>();
+        }
         EnemyObj.Add(temp);
     }
     internal void RemoveEnemy(Transform transform)
@@ -115,17 +119,21 @@ public sealed class GameManager : GenericSingletonClass<GameManager>
         resultPanel.SetActive(true);
         StopAllCoroutines();
     }
-    internal void PlaceBomb(Transform transform)
+    internal void PlaceBomb(Vector3 position)
     {
         if (bomb == null)
         {
-            Vector3 pos = new Vector3(MathF.Round(transform.position.x), MathF.Round(transform.position.y), 0);
+            Vector3 pos = GetNearestAbsoluteLocation(position);
             bomb = Instantiate(bombPrefab, pos, Quaternion.identity);
         }
     }
     internal void BlasstBomb()
     {
         if (bomb == null) return;
+        if (IsPlayerAlive && GetNearestAbsoluteLocation(PlayerObj.position) == bomb.position)
+        {
+            PlayerDie();
+        }
         StartCoroutine(BlasstBombCheck(Vector3.up));
         StartCoroutine(BlasstBombCheck(Vector3.down));
         StartCoroutine(BlasstBombCheck(Vector3.right));
@@ -179,6 +187,11 @@ public sealed class GameManager : GenericSingletonClass<GameManager>
         }
         return true;
     }
+    internal Vector3 GetNearestAbsoluteLocation(Vector3 position)
+    {
+        return new Vector3(MathF.Round(position.x), MathF.Round(position.y), 0);
+    }
+    #region Playerprefs
     internal int TotalPlayedGames
     {
         get => PlayerPrefs.GetInt(nameof(TotalPlayedGames), 0);
@@ -206,4 +219,5 @@ public sealed class GameManager : GenericSingletonClass<GameManager>
             PlayerPrefs.Save();
         }
     }
+    #endregion
 }

@@ -112,15 +112,11 @@ public sealed class EnemyAi : MonoBehaviour
             }
             nextTargetPosition = transform.position + nextTargetDirection;
             //to avoid Issue with ai that it recieved nextTargetPosition to wall position so it stuck.
-            nextTargetPosition = GetNearestAbsoluteLocation(nextTargetPosition);
+            nextTargetPosition = GameManager.Instance.GetNearestAbsoluteLocation(nextTargetPosition);
         }
         isPosChecking = false;
     }
-    Vector3 GetNearestAbsoluteLocation(Vector3 position)
-    {
-        Vector3 result = new Vector3(MathF.Round(position.x), MathF.Round(position.y), 0);
-        return result;
-    }
+
     void SetNextTargetDirection(Vector3 direction, bool extra = true)
     {
         if (IsWayToGo(direction) && extra)

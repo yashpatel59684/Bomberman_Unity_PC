@@ -11,7 +11,7 @@ public sealed class MapGenerator : MonoBehaviour
     [SerializeField] Transform outWallPrefab, inWallPrefab, brickPrefab;
     internal List<Vector2> EmptyPlace { get; private set; }
     MapGenerator() { }
-    internal void GenerateMap()
+    public void GenerateMap()
     {
         DeleteOldMap();
         GameObject tempGeneratedObj = null;
@@ -66,7 +66,7 @@ public sealed class MapGenerator : MonoBehaviour
         }
         cameraHandler.CenterMe((float)x / 2, (float)y / 2);
     }
-    internal void DeleteOldMap()
+    public void DeleteOldMap()
     {
         if (transform.childCount > 0)
         {
