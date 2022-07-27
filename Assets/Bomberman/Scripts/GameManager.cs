@@ -108,7 +108,7 @@ public sealed class GameManager : GenericSingletonClass<GameManager>
         if (isGameDone) yield break;
         isGameDone = true;
         yield return new WaitForSeconds((bombNextBlastWait * bombBlastRange) + 2);
-        if (IsPlayerAlive)
+        if (IsPlayerAlive && EnemyObj.Count <= 0)
         {
             DestroyPlayer();
             ++TotalWinGames;
@@ -136,6 +136,7 @@ public sealed class GameManager : GenericSingletonClass<GameManager>
         if (bomb == null) return;
         if (IsPlayerAlive && GetNearestAbsoluteLocation(PlayerObj.position) == bomb.position)
         {
+            DestroyPlayer();
             PlayerDie();
         }
         StartCoroutine(BlasstBombCheck(Vector3.up));
