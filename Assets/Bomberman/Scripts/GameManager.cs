@@ -107,7 +107,7 @@ public sealed class GameManager : GenericSingletonClass<GameManager>
     {
         if (isGameDone) yield break;
         isGameDone = true;
-        yield return new WaitForSeconds((bombNextBlastWait * bombBlastRange) + 2);
+        yield return new WaitForSeconds(bombNextBlastWait * bombBlastRange);
         if (IsPlayerAlive && EnemyObj.Count <= 0)
         {
             DestroyPlayer();
@@ -119,6 +119,7 @@ public sealed class GameManager : GenericSingletonClass<GameManager>
             Debug.Log($"Player Lose");
         }
         ++TotalPlayedGames;
+        yield return new WaitForSeconds(2);
         //mapGenerator.DeleteOldMap();
         resultPanel.SetActive(true);
         StopAllCoroutines();
